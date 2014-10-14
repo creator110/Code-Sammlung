@@ -1,0 +1,53 @@
+<h2>Gaestebuch</h2>
+<p>Sie koennen sich in das Gaestebuch <a href="index.php?seite=5">eintragen</a></p>
+<?php
+
+
+  // Aufbau der Verbindung zum Datenbankserver 
+  $links = mysql_connect( 'host' , 'user', 'password')
+  or die ('Verbindungsaufbau hat nicht funktioniert: ' . mysql_error());
+
+//eine Datenbank als aktive Datenbank auswaehlen
+mysql_select_db('db_name')
+or die('Wechsel zu Datenbank nicht moeglich: ' . mysql_error());
+	
+//Abfrage 
+$query =	"SELECT
+				name,
+				date_format(datum, '%d.%m.%Y um %H:%i Uhr') as datum,
+				kommentar
+				email
+			 FROM
+				eintraege
+			 ORDER BY
+				datum
+			 DESC";
+			 
+// Abfragen an den Server senden
+$result = mysql_query($query );
+
+
+
+	
+			 
+			// die Schleife zeichnet Automatisch eine Tabelle mit den angegebenen Werten
+			// kontakt und kommentar sind vertauscht, vermute den fehler in der 
+			// reihenfolge der Spalten in der DB 
+			while($datensatz = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		?>
+			<div class="gbe-wrapper">
+				<div class="gbe-header">
+						<strong><?php echo $datensatz['name']; ?></strong> schrieb am <?php echo $datensatz['datum'];?>
+				</div>
+			
+				<div class="gbe-content"> 
+					<?php echo $datensatz['kommentar']; ?> 
+				</div>
+				
+				<div class="gbe-footer">
+					Kommentar: <?php echo $datensatz['email'];?>
+				</div>
+				<br />
+			</div>
+		<?php 
+		}
