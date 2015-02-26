@@ -1,0 +1,7 @@
+if (touch($filename)) {
+    echo $filename . '-Modifikationszeit wurde auf die aktuelle Zeit gesetzt.';
+} else {
+    echo 'Entschuldigung, die Änderung der Modifikationszeit von ' . $filename
+    ' war nicht möglich.';
+}
+?>
