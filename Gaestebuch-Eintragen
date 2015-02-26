@@ -18,7 +18,7 @@ $query =	"SELECT
 				kommentar
 				email
 			 FROM
-				eintraege
+				db_table
 			 ORDER BY
 				datum
 			 DESC";
