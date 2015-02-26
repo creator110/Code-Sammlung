@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+ 
+<html>
+ 
+<head>
+	<title>Beispiel HTML5 Grundgerüst - www.candc-brogrammers.com</title>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Kurzbeschreibung" />
+ 
+	<link href="css/main.css" type="text/css" rel="stylesheet" />
+ 
+</head>
+ 
+<body>
+ 
+</body>
+</html>
